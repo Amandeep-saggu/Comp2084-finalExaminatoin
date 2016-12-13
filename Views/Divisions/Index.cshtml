@@ -1,0 +1,31 @@
+﻿@model IEnumerable<FinalExam.Division>
+
+@{
+    ViewBag.Title = "Divisions";
+}
+
+<h2>NHL Divisions</h2>
+
+<p>
+    
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(item.Name, "Edit", new { id=item.DivisionID }) 
+        </td>
+        <td>
+            
+        </td>
+    </tr>
+}
+
+</table>
