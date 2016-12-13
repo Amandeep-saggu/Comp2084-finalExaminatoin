@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FinalExamModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="FinalExamModelStoreContainer">
+    <EntitySet Name="Divisions" EntityType="FinalExamModel.Store.Divisions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Teams" EntityType="FinalExamModel.Store.Teams" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Teams_Divisions" Association="FinalExamModel.Store.FK_Teams_Divisions">
+      <End Role="Divisions" EntitySet="Divisions" />
+      <End Role="Teams" EntitySet="Teams" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Divisions">
+    <Key>
+      <PropertyRef Name="DivisionID" />
+    </Key>
+    <Property Name="DivisionID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Teams">
+    <Key>
+      <PropertyRef Name="TeamID" />
+    </Key>
+    <Property Name="TeamID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Games" Type="int" />
+    <Property Name="Wins" Type="int" />
+    <Property Name="Losses" Type="int" />
+    <Property Name="OvertimeLosses" Type="int" />
+    <Property Name="Points" Type="int" />
+    <Property Name="DivisionID" Type="int" Nullable="false" />
+    <Property Name="Logo" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK_Teams_Divisions">
+    <End Role="Divisions" Type="FinalExamModel.Store.Divisions" Multiplicity="1" />
+    <End Role="Teams" Type="FinalExamModel.Store.Teams" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Divisions">
+        <PropertyRef Name="DivisionID" />
+      </Principal>
+      <Dependent Role="Teams">
+        <PropertyRef Name="DivisionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

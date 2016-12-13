@@ -1,0 +1,91 @@
+﻿@model FinalExam.Team
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Team</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Games)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Games)
+            @Html.ValidationMessageFor(model => model.Games)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Wins)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Wins)
+            @Html.ValidationMessageFor(model => model.Wins)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Losses)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Losses)
+            @Html.ValidationMessageFor(model => model.Losses)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OvertimeLosses)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.OvertimeLosses)
+            @Html.ValidationMessageFor(model => model.OvertimeLosses)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Points)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Points)
+            @Html.ValidationMessageFor(model => model.Points)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DivisionID, "Division")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("DivisionID", String.Empty)
+            @Html.ValidationMessageFor(model => model.DivisionID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Logo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Logo)
+            @Html.ValidationMessageFor(model => model.Logo)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
