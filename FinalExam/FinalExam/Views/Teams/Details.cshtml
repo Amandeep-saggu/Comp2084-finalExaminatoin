@@ -1,0 +1,71 @@
+﻿@model FinalExam.Team
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Team</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Games)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Games)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Wins)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Wins)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Losses)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Losses)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OvertimeLosses)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OvertimeLosses)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Points)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Points)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Division.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Division.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Logo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Logo)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.TeamID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

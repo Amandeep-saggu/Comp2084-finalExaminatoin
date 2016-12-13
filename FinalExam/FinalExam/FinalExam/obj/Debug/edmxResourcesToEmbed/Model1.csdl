@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FinalExamModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="FinalExamEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Divisions" EntityType="FinalExamModel.Division" />
+    <EntitySet Name="Teams" EntityType="FinalExamModel.Team" />
+    <AssociationSet Name="FK_Teams_Divisions" Association="FinalExamModel.FK_Teams_Divisions">
+      <End Role="Divisions" EntitySet="Divisions" />
+      <End Role="Teams" EntitySet="Teams" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Division">
+    <Key>
+      <PropertyRef Name="DivisionID" />
+    </Key>
+    <Property Name="DivisionID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Teams" Relationship="FinalExamModel.FK_Teams_Divisions" FromRole="Divisions" ToRole="Teams" />
+  </EntityType>
+  <EntityType Name="Team">
+    <Key>
+      <PropertyRef Name="TeamID" />
+    </Key>
+    <Property Name="TeamID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Games" Type="Int32" />
+    <Property Name="Wins" Type="Int32" />
+    <Property Name="Losses" Type="Int32" />
+    <Property Name="OvertimeLosses" Type="Int32" />
+    <Property Name="Points" Type="Int32" />
+    <Property Name="DivisionID" Type="Int32" Nullable="false" />
+    <Property Name="Logo" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Division" Relationship="FinalExamModel.FK_Teams_Divisions" FromRole="Teams" ToRole="Divisions" />
+  </EntityType>
+  <Association Name="FK_Teams_Divisions">
+    <End Role="Divisions" Type="FinalExamModel.Division" Multiplicity="1" />
+    <End Role="Teams" Type="FinalExamModel.Team" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Divisions">
+        <PropertyRef Name="DivisionID" />
+      </Principal>
+      <Dependent Role="Teams">
+        <PropertyRef Name="DivisionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
